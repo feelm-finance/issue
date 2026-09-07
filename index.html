@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>카페공명 파트너 투자제안서</title>
+<style>
+  :root{
+    --page-bg:#e9e9ea;
+    --ink:#2b3a4a;
+    --sub:#697683;
+    --line:#d8dde1;
+    --card:#ffffff;
+    --head-bg:#33495e;
+    --accent-bg:#e7edf1;
+    --good:#2f7d5b;
+    --good-bg:#e8f3ee;
+    --good-border:#bcdccb;
+    --warn:#b5452f;
+    --warn-bg:#fbeae6;
+    --warn-border:#e2b7ac;
+    --note-bg:#f4f1e7;
+    --note-border:#e1d9bd;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    background:var(--page-bg);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    color:var(--ink);
+  }
+  body{
+    display:flex;
+    justify-content:center;
+    padding:24px 12px;
+  }
+  .page{
+    width:210mm;
+    min-height:297mm;
+    background:var(--card);
+    box-shadow:0 6px 24px rgba(0,0,0,0.12);
+    padding:18mm 16mm;
+  }
+  .wrap{ max-width:100%; margin:0 auto; }
+
+  /* header */
+  .doc-meta{
+    font-size:10.5px;
+    color:var(--sub);
+    text-align:right;
+    margin:0 0 18px;
+  }
+  h1{
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    margin:0 0 4px;
+  }
+  .doc-sub{
+    font-size:12px;
+    color:var(--sub);
+    margin:0 0 30px;
+  }
+
+  /* section heading */
+  .sec{
+    margin:0 0 26px;
+  }
+  .sec-h{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin:0 0 9px;
+    padding-bottom:7px;
+    border-bottom:2px solid var(--head-bg);
+  }
+  .sec-h .num{
+    background:var(--head-bg);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:800;
+    width:20px;
+    height:20px;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+  }
+  .sec-h .title{
+    font-size:13.5px;
+    font-weight:800;
+  }
+  .sec-body p{
+    font-size:11.3px;
+    line-height:1.72;
+    color:var(--ink);
+    margin:0 0 9px;
+  }
+  .sec-body p:last-child{ margin-bottom:0; }
+
+  /* lists */
+  ul.list, ol.list-num{
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  ul.list li{
+    position:relative;
+    padding-left:14px;
+    font-size:11.3px;
+    line-height:1.6;
+    margin-bottom:6px;
+    color:var(--ink);
+  }
+  ul.list li::before{
+    content:"–";
+    position:absolute;
+    left:0;
+    color:var(--head-bg);
+    font-weight:700;
+  }
+  ol.list-num{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+  }
+  ol.list-num li{
+    font-size:11.3px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  ol.list-num li b{
+    color:var(--head-bg);
+    margin-right:2px;
+  }
+
+  /* note box */
+  .note{
+    background:var(--note-bg);
+    border:1px solid var(--note-border);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:11px;
+    line-height:1.6;
+    color:var(--ink);
+  }
+  .note .label{
+    font-weight:800;
+    margin-right:4px;
+  }
+
+  /* tables */
+  table.card-table{
+    width:auto;
+    max-width:100%;
+    margin:6px 0 0;
+    border-collapse:separate;
+    border-spacing:0;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 4px 16px -10px rgba(0,0,0,0.12);
+  }
+  table.card-table th{
+    background:var(--head-bg);
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    text-align:left;
+    padding:8px 12px;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  table.card-table td{
+    font-size:11.3px;
+    padding:9px 12px;
+    border-top:1px solid var(--line);
+    vertical-align:top;
+    line-height:1.5;
+    white-space:nowrap;
+  }
+  table.card-table td.gubun{ font-weight:700; color:var(--ink); }
+  table.card-table td.structure{ font-weight:600; color:var(--ink); }
+  table.card-table td.feature{ color:var(--sub); }
+
+  /* section-1 sub-groups */
+  .group{ width:fit-content; max-width:100%; margin:0 0 18px; }
+  .group:last-child{ margin-bottom:0; }
+  .group-head{ display:flex; align-items:center; gap:8px; width:100%; margin:0 0 8px; }
+  .group-head .tag{
+    font-size:9.5px;
+    font-weight:700;
+    padding:3px 9px;
+    border-radius:999px;
+    background:var(--accent-bg);
+    color:var(--head-bg);
+  }
+  .group table.card-table{ width:615px; table-layout:fixed; margin:0; }
+  .group col.c1{ width:120px; }
+  .group col.c2{ width:185px; }
+  .group col.c3{ width:310px; }
+  .group table.card-table td{ white-space:nowrap; }
+
+  /* flow diagram (section 12) */
+  .flow2col{ display:flex; gap:22px; }
+  .flow-col{ flex:1; min-width:0; }
+  .flow-col-h{ display:flex; align-items:center; gap:8px; margin:0 0 10px; }
+  .flow-col-h .badge{
+    background:var(--head-bg);
+    color:#fff;
+    width:19px; height:19px;
+    border-radius:5px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10.5px; font-weight:800;
+    flex:0 0 auto;
+  }
+  .flow-col-h .name{ font-size:12.5px; font-weight:800; }
+  .flow-step{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:9px;
+    padding:8px 12px;
+    text-align:center;
+  }
+  .flow-step .sub{ font-size:9px; color:var(--sub); margin:0 0 2px; }
+  .flow-step .main{ font-size:10.8px; font-weight:700; color:var(--ink); }
+  .flow-arrow{ text-align:center; color:var(--sub); font-size:11px; line-height:1; margin:3px 0; }
+  .flow-step.good{ background:var(--good-bg); border-color:var(--good-border); }
+  .flow-step.good .main{ color:var(--good); }
+  .flow-step.warn-text .main{ color:var(--warn); }
+  .flow-step.warn{ background:var(--warn-bg); border-color:var(--warn-border); }
+  .flow-step.warn .main{ color:var(--warn); }
+  .flow-step.info{ background:var(--accent-bg); border-color:#b9c9d6; }
+  .flow-step.info .sub{ color:#7c8ea0; }
+  .flow-step.info .main{ color:var(--head-bg); }
+
+  /* section-6 detail: step cards */
+  .step-row{ display:flex; gap:12px; margin:14px 0 16px; }
+  .step-card{ flex:1; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--head-bg); border-radius:10px; padding:11px 13px; }
+  .step-card.warn{ border-top-color:var(--warn); background:var(--warn-bg); }
+  .step-card .idx{ font-size:9px; color:var(--sub); font-weight:800; letter-spacing:0.04em; margin-bottom:3px; }
+  .step-card .t{ font-size:11.3px; font-weight:800; margin-bottom:6px; }
+  .step-card .d{ font-size:10px; color:var(--sub); line-height:1.55; margin-bottom:8px; }
+  .step-card .r{ font-size:10.3px; font-weight:700; color:var(--sub); border-top:1px dashed var(--line); padding-top:7px; }
+  .step-card.warn .r{ color:var(--warn); }
+  .step-card .r .big{ font-size:14px; font-weight:800; }
+  .step-card .r .sm{ font-size:9px; font-weight:600; display:block; margin-top:2px; }
+
+  .example-title{ font-size:12.3px; font-weight:800; margin:4px 0 4px; }
+
+  .stat-row{ display:flex; gap:10px; margin:10px 0 14px; }
+  .stat-card{ flex:1; background:var(--accent-bg); border-radius:10px; padding:9px 12px; }
+  .stat-card .l{ font-size:9px; color:var(--sub); margin-bottom:3px; }
+  .stat-card .v{ font-size:14px; font-weight:800; color:var(--ink); }
+  .stat-card .v .u{ font-size:9.5px; font-weight:600; color:var(--sub); margin-left:2px; }
+
+  .legend{ display:flex; gap:16px; font-size:9.5px; color:var(--sub); margin:0 0 6px; }
+  .legend .dot{ display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; }
+  .legend .dot.blue{ background:#3d6ea5; }
+  .legend .dot.amber{ background:var(--warn); }
+
+  .chart-box{ border:1px solid var(--line); border-radius:10px; padding:10px 8px 4px; margin:0 0 16px; }
+
+  .split-row{ display:flex; gap:12px; margin:0 0 14px; }
+  .split-card{ flex:1; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .split-card .hd{ padding:8px 13px; border-bottom:3px solid #3d6ea5; }
+  .split-card.amber .hd{ border-bottom-color:var(--warn); }
+  .split-card .hd .period{ font-size:9px; color:#3d6ea5; font-weight:800; }
+  .split-card.amber .hd .period{ color:var(--warn); }
+  .split-card .hd .name{ font-size:11.5px; font-weight:800; }
+  .split-card .body{ padding:9px 13px; }
+  .split-card .row{ display:flex; justify-content:space-between; gap:8px; font-size:10.3px; padding:5px 0; border-bottom:1px dashed var(--line); }
+  .split-card .row:last-child{ border-bottom:none; }
+  .split-card .row .k{ color:var(--sub); flex:0 0 auto; }
+  .split-card .row .v{ font-weight:700; text-align:right; }
+  .split-card .row.total .v{ font-size:12.5px; }
+  .split-card.amber .row.total .v{ color:var(--warn); }
+
+  .calc-lines{ background:var(--accent-bg); border-radius:10px; padding:9px 14px; margin:0 0 14px; font-size:10.3px; }
+  .calc-lines .ln{ display:flex; justify-content:space-between; gap:10px; padding:4px 0; }
+  .calc-lines .ln .f{ font-weight:700; white-space:nowrap; }
+  .calc-lines .ln .hint{ color:var(--sub); white-space:nowrap; }
+
+  .result-row{ display:flex; gap:12px; margin:0 0 8px; }
+  .result-card{ flex:1; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:9px 13px; }
+  .result-card .l{ font-size:9px; color:var(--sub); margin-bottom:4px; }
+  .result-card .v{ font-size:15px; font-weight:800; color:var(--head-bg); }
+  .result-card.amber .v{ color:var(--warn); }
+
+  .footnote{ font-size:9px; color:var(--sub); line-height:1.6; margin-top:2px; }
+
+  @media print{
+    .step-row, .stat-row, .split-row, .result-row{ break-inside:avoid; }
+    .chart-box{ break-inside:avoid; }
+    body{ background:#fff; padding:0; display:block; }
+    .page{ width:auto; min-height:0; box-shadow:none; padding:0; }
+    @page{ size:A4; margin:16mm 14mm; }
+    .sec{ break-inside:avoid; }
+    table.card-table{ break-inside:avoid; }
+    .flow2col{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<div class="wrap">
+
+  <p class="doc-meta">기준 문서: 동서회계법인 최재영 회계사 검토 · 2026. 9. 1.</p>
+  <h1>카페공명 파트너 투자제안서</h1>
+  <p class="doc-sub">전체 내용 정리</p>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">1</span><span class="title">현재 카페공명 사업 구조</span></div>
+    <div class="sec-body">
+      <p>현재 구조는 건물주–회사 관계와 투자자–회사 관계로 구분됩니다. 투자자는 특정 매장 개설자금을 지급하고, 회사는 매장을 운영하면서 순매출액의 일정 비율을 지급하는 구조입니다.</p>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="tag">건물주 관련</span></div>
+      <table class="card-table">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+        <thead><tr><th>구분</th><th>현재 구조</th><th>주요 특징</th></tr></thead>
+        <tbody>
+          <tr><td class="gubun">건물주 → 회사</td><td class="structure">인테리어 등 지원금 지급</td><td class="feature">현재 컨설팅 매출 인식 및 세금계산서 발행</td></tr>
+          <tr><td class="gubun">회사 → 건물주</td><td class="structure">매출연동 임차료 지급</td><td class="feature">매출액의 일정 비율</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="tag">투자자 관련</span></div>
+      <table class="card-table">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+        <thead><tr><th>구분</th><th>현재 구조</th><th>주요 특징</th></tr></thead>
+        <tbody>
+          <tr><td class="gubun">투자자 → 회사</td><td class="structure">매장 개설 투자금 지급</td><td class="feature">규모별 2~10% 분배율</td></tr>
+          <tr><td class="gubun">회사 → 투자자</td><td class="structure">순매출액 기준 분배</td><td class="feature">원금 우선 회수 후 투자수익</td></tr>
+          <tr><td class="gubun">투자금 담보</td><td class="structure">집기·설비</td><td class="feature">현재 투자자 명의 및 처분권 구조</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><span class="tag">기타</span></div>
+      <table class="card-table">
+        <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+        <thead><tr><th>구분</th><th>현재 구조</th><th>주요 특징</th></tr></thead>
+        <tbody>
+          <tr><td class="gubun">인테리어 공사</td><td class="structure">회사가 관련 업무 수행</td><td class="feature">실내건축공사업 면허 없음</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">2</span><span class="title">가장 중요한 결론</span></div>
+    <div class="sec-body">
+      <ul class="list">
+        <li>건물주 인테리어 지원금: 재화·용역의 대가가 아니라면 세금계산서 발행 대상이 아닐 가능성이 큼.</li>
+        <li>투자자 투자금: 매출이 아니라 차입금으로 처리하고 세금계산서를 발행하지 않는 방향이 타당함.</li>
+        <li>집기·시설: 회사 소유로 두고 투자자에게 담보로 제공하는 구조가 필요함.</li>
+        <li>인테리어 업무: 명칭과 무관하게 실질이 공사대가이면 건설업 면허 문제가 발생할 수 있음.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">3</span><span class="title">건물주 인테리어 지원금의 세무처리</span></div>
+    <div class="sec-body">
+      <p>현재 회사는 지원금을 컨설팅 매출로 인식하고 세금계산서를 발행하고 있으나, 검토 의견은 사실관계상 재화나 용역의 공급대가로 보기 어렵다는 것입니다. 비과세 구조를 명확히 하려면 계약서에 지급 목적·금액, 인테리어 소유권이 임차인에게 있다는 점, 임대차 종료 시 임차인의 원상복구 의무를 명시해야 합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">4</span><span class="title">건물주 지원금의 회계처리</span></div>
+    <div class="sec-body">
+      <p>수취연도에 전액 잡이익으로 처리하면 법인세 부담이 집중될 수 있습니다. 검토 의견은 국고보조금과 유사하게 지원금을 인테리어 자산의 차감계정으로 처리하고, 내용연수 동안 감가상각비와 상계하는 방식입니다. 예를 들어 인테리어 자산 3억원, 지원금 1억원이라면 1억원을 즉시 전액 수익으로 인식하지 않고 자산 차감 방식으로 대응합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">5</span><span class="title">투자자가 지급하는 투자금</span></div>
+    <div class="sec-body">
+      <p>투자자는 일정 금액을 지급한 뒤 매출연동 분배를 통해 원금을 우선 회수하고, 원금 초과분부터 수익을 얻습니다. 따라서 최초 투자금은 향후 상환할 금액인 차입금으로 처리하는 것이 타당하며, 재화·용역의 공급이 아니므로 세금계산서 발행 대상도 아닌 것으로 판단됩니다.</p>
+      <div class="note"><span class="label">투자금 수취 분개</span>차변 현금 / 대변 차입금</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">6</span><span class="title">투자자에게 지급하는 금액</span></div>
+    <div class="sec-body">
+      <p>누적 지급액이 투자원금에 이를 때까지는 차입금 상환으로 처리하고 원천징수하지 않습니다. 투자원금을 초과하여 지급하는 금액은 비영업대금의 이자 성격으로 보아 27.5% 원천징수하는 방안이 보수적으로 안전하다는 의견입니다.</p>
+    </div>
+    <table class="card-table">
+      <thead><tr><th>누적 수령 구간</th><th>성격</th><th>회사 처리</th><th>원천징수</th></tr></thead>
+      <tbody>
+        <tr><td class="gubun">원금 범위 내</td><td class="structure">투자원금 반환</td><td class="structure">차입금 상환</td><td class="feature">없음</td></tr>
+        <tr><td class="gubun">원금 초과분</td><td class="structure">투자수익</td><td class="structure">이자비용 등</td><td class="feature">27.5%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="step-row">
+      <div class="step-card">
+        <div class="idx">01</div>
+        <div class="t">투자금 수취 시</div>
+        <div class="d">상환 의무가 있는 차입금 성격의 자금 수취</div>
+        <div class="r">✕ 세금계산서 발행 대상 아님</div>
+      </div>
+      <div class="step-card">
+        <div class="idx">02</div>
+        <div class="t">원금 상환 단계</div>
+        <div class="d">지급액이 납입 원금 범위 내인 동안 차입금 상환 처리</div>
+        <div class="r">✕ 원천징수 없음</div>
+      </div>
+      <div class="step-card warn">
+        <div class="idx">03</div>
+        <div class="t">원금 초과 수익분배 단계</div>
+        <div class="d">원금 초과분은 비영업대금의 이자(이자소득)로 처리</div>
+        <div class="r"><span class="big">27.5%</span> 원천징수<span class="sm">이자소득세 25%+지방소득세 2.5%</span></div>
+      </div>
+    </div>
+
+    <div class="note" style="margin:0 0 18px;"><span class="label">정리</span>지급액 누계가 원금을 넘어서는 시점을 기준으로 그 이전은 원금 상환(원천징수 없음), 그 이후 초과분은 비영업대금의 이자로 보아 27.5%를 원천징수하는 방식이 실무상 보수적으로 채택됩니다.</div>
+
+    <p class="example-title">적용 예시 — 투자원금 3억원 · 월 분배금을 원금에 우선 충당하는 경우</p>
+    <div class="sec-body">
+      <p>월 매출(1억 기준)의 5%(500만원)를 매월 지급하되, 누적 지급액이 투자원금에 도달할 때까지는 그 달의 지급액 전액을 원금 상환으로 먼저 처리하는 방식입니다.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-card"><div class="l">투자원금</div><div class="v">3<span class="u">억원</span></div></div>
+      <div class="stat-card"><div class="l">월 매출</div><div class="v">1<span class="u">억원</span></div></div>
+      <div class="stat-card"><div class="l">월 분배금</div><div class="v">500<span class="u">만원</span></div></div>
+      <div class="stat-card"><div class="l">원금 회수 기간</div><div class="v">60<span class="u">개월(5년)</span></div></div>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot blue"></span>원금 회수 구간 · 1~60개월 · 원천징수 없음</span>
+      <span><span class="dot amber"></span>원금 초과(이자) 구간 · 61개월~ · 27.5% 원천징수</span>
+    </div>
+
+    <div class="chart-box">
+      <svg viewBox="0 0 800 300" width="100%" style="display:block;font-family:inherit;">
+        <line x1="60" y1="191.25" x2="780" y2="191.25" stroke="#e6e9ec" stroke-width="1"/>
+        <line x1="60" y1="137.5" x2="780" y2="137.5" stroke="#e6e9ec" stroke-width="1"/>
+        <line x1="60" y1="83.75" x2="780" y2="83.75" stroke="#e6e9ec" stroke-width="1"/>
+        <line x1="60" y1="30" x2="780" y2="30" stroke="#e6e9ec" stroke-width="1"/>
+        <line x1="60" y1="245" x2="780" y2="245" stroke="#c7ccd1" stroke-width="1"/>
+
+        <text x="50" y="249" text-anchor="end" font-size="10" fill="#697683">0</text>
+        <text x="50" y="195.25" text-anchor="end" font-size="10" fill="#697683">1억</text>
+        <text x="50" y="141.5" text-anchor="end" font-size="10" fill="#697683">2억</text>
+        <text x="50" y="87.75" text-anchor="end" font-size="10" fill="#697683">3억</text>
+        <text x="50" y="34" text-anchor="end" font-size="10" fill="#697683">4억</text>
+
+        <text x="60" y="262" text-anchor="middle" font-size="10" fill="#697683">0개월</text>
+        <text x="240" y="262" text-anchor="middle" font-size="10" fill="#697683">20개월</text>
+        <text x="420" y="262" text-anchor="middle" font-size="10" fill="#697683">40개월</text>
+        <text x="600" y="262" text-anchor="middle" font-size="10" fill="#697683">60개월</text>
+        <text x="780" y="262" text-anchor="middle" font-size="10" fill="#697683">80개월</text>
+
+        <path d="M60,245 L600,83.75 L600,245 Z" fill="#3d6ea5" opacity="0.12"/>
+        <path d="M600,83.75 L780,30 L780,245 L600,245 Z" fill="var(--warn)" opacity="0.14"/>
+
+        <line x1="60" y1="83.75" x2="600" y2="83.75" stroke="#3d6ea5" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="66" y="78" font-size="9.5" fill="#3d6ea5" font-weight="700">투자원금 3억원</text>
+
+        <line x1="600" y1="83.75" x2="600" y2="245" stroke="#8a919a" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="600" y="60" text-anchor="middle" font-size="9.5" fill="var(--ink)" font-weight="700">60개월(5년)째</text>
+        <text x="600" y="71" text-anchor="middle" font-size="9.5" fill="var(--ink)" font-weight="700">원금 전액 회수</text>
+
+        <text x="774" y="20" text-anchor="end" font-size="9.5" fill="var(--warn)" font-weight="700">누적 4억원(80개월)</text>
+
+        <path d="M60,245 L600,83.75" fill="none" stroke="#3d6ea5" stroke-width="2.5"/>
+        <path d="M600,83.75 L780,30" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <circle cx="600" cy="83.75" r="3.5" fill="#3d6ea5"/>
+        <circle cx="780" cy="30" r="3.5" fill="var(--warn)"/>
+      </svg>
+    </div>
+
+    <div class="split-row">
+      <div class="split-card">
+        <div class="hd"><div class="period">1~60개월</div><div class="name">원금 회수 구간</div></div>
+        <div class="body">
+          <div class="row"><span class="k">월 지급액</span><span class="v">5,000,000원</span></div>
+          <div class="row"><span class="k">세무처리</span><span class="v">전액 원금 상환</span></div>
+          <div class="row"><span class="k">원천징수</span><span class="v">없음</span></div>
+          <div class="row total"><span class="k">월 실수령액</span><span class="v">5,000,000원</span></div>
+        </div>
+      </div>
+      <div class="split-card amber">
+        <div class="hd"><div class="period">61개월~</div><div class="name">원금 초과(이자) 구간</div></div>
+        <div class="body">
+          <div class="row"><span class="k">월 지급액</span><span class="v">5,000,000원</span></div>
+          <div class="row"><span class="k">세무처리</span><span class="v">전액 비영업대금 이자</span></div>
+          <div class="row"><span class="k">원천징수</span><span class="v">27.5% · 1,375,000원</span></div>
+          <div class="row total"><span class="k">월 실수령액</span><span class="v">3,625,000원</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-lines">
+      <div class="ln"><span class="f">300,000,000 ÷ 5,000,000 = 60개월</span><span class="hint">원금 전액 회수 시점</span></div>
+      <div class="ln"><span class="f">5,000,000 × 27.5% = 1,375,000원</span><span class="hint">61개월째부터 월 원천징수세액</span></div>
+      <div class="ln"><span class="f">5,000,000 − 1,375,000 = 3,625,000원</span><span class="hint">61개월째부터 월 실수령액</span></div>
+    </div>
+
+    <div class="result-row">
+      <div class="result-card"><div class="l">원금 회수 완료 시점</div><div class="v">60개월(5년)</div></div>
+      <div class="result-card amber"><div class="l">61개월째부터 월 실수령액</div><div class="v">3,625,000원</div></div>
+    </div>
+
+    <p class="footnote">* 월 매출 1억원, 분배율 5%(월 500만원)가 계속 유지된다고 가정한 경우입니다. 실제로는 매출 변동에 따라 원금 회수 시점과 이후 원천징수세액이 달라질 수 있습니다.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">7</span><span class="title">투자수익을 이자로 보는 이유</span></div>
+    <div class="sec-body">
+      <p>원금 초과 지급액은 배당소득·사업소득·이자소득 등 여러 해석 가능성이 있으나, 유사사례와 판례를 고려하면 비영업대금의 이익에 해당하는 이자소득으로 처리하는 것이 보수적이라는 의견입니다. 원천징수된 금액은 투자자의 법인세 또는 종합소득세 신고 시 기납부세액으로 공제됩니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">8</span><span class="title">집기·시설의 소유권</span></div>
+    <div class="sec-body">
+      <p>투자자에게 집기·시설의 소유권과 처분권을 부여하면 회사 자산으로 보기 어려워 회사가 감가상각비를 비용 처리하는 데 문제가 생길 수 있습니다. 계약은 '투자자 소유'가 아니라 '회사 소유 + 투자금 담보 제공' 구조로 정비할 필요가 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">9</span><span class="title">담보물의 특정 및 처분조건</span></div>
+    <div class="sec-body">
+      <p>영업개시 직전에 에스프레소 머신, 그라인더, 냉장고, 테이블·의자 등 담보 대상 유형자산을 수량·취득가액과 함께 명세서로 작성하고 상호 확인해야 합니다. 처분권 행사는 회사의 운영 포기, 당사자 합의, 일정 기준 이하 매출의 장기 지속 등 객관적 요건과 연결하는 것이 필요합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">10</span><span class="title">투자계약서 보완사항</span></div>
+    <div class="sec-body">
+      <ul class="list">
+        <li>투자금의 세무처리와 수익 귀속기간</li>
+        <li>집기·시설의 회사 소유 및 담보 제공 구조</li>
+        <li>담보 대상 자산 명세와 처분권 행사조건</li>
+        <li>회사의 운영 중단·계약해지 조건</li>
+        <li>순매출액의 정의와 제외·포함 항목</li>
+        <li>투자자의 중도해지 및 권리양도 요건</li>
+        <li>투자금 미납·지연 시 계약금 몰취, 손해배상 및 해지 조건</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">11</span><span class="title">임대차계약 및 실내건축공사업 면허</span></div>
+    <div class="sec-body">
+      <p>임대차계약에는 쌍방의 중도해지 조건, 위약금, 지원금 반환의무 배제, 재계약 시 임대료 인상 상한, 지원금 세무처리, 건물주 부담금 지연 시 조치, 원상복구 의무와 인테리어 소유권을 명확히 두어야 합니다. 또한 1,500만원 이상의 실내건축공사는 면허 문제가 발생할 수 있으며, 실질이 인테리어 공사대가라면 '컨설팅비' 등으로 명칭을 바꾸어도 위험이 해소되지 않습니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">12</span><span class="title">전체 거래의 권장 구조</span></div>
+    <div class="flow2col">
+      <div class="flow-col">
+        <div class="flow-col-h"><span class="badge">A</span><span class="name">건물주</span></div>
+        <div class="flow-step"><div class="sub">건물주 → 카페공명</div><div class="main">인테리어 지원금 지급</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="sub">원칙적으로 재화·용역 공급대가가 아니라면</div><div class="main">세금계산서 발행 X</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="sub">회계상</div><div class="main">인테리어 자산 차감 방식 등 검토</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step good"><div class="main">내용연수 동안 감가상각비와 대응</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step info"><div class="sub">카페공명 → 건물주</div><div class="main">매출연동 임차료 지급</div></div>
+      </div>
+      <div class="flow-col">
+        <div class="flow-col-h"><span class="badge">B</span><span class="name">투자자</span></div>
+        <div class="flow-step"><div class="sub">투자자 → 카페공명</div><div class="main">투자금 지급</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="main">차입금 인식</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="main">세금계산서 발행 X</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="main">매월 순매출액 × 약정비율 지급</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step"><div class="main">원금까지 = 차입금 상환</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step warn-text"><div class="main">원금 초과 = 비영업대금 이자</div></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step warn"><div class="main">27.5% 원천징수</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">13</span><span class="title">계약서 작성 방향에 따른 결론 변화</span></div>
+    <div class="sec-body">
+      <p>검토 의견은 인테리어·집기의 실질 소유자가 회사이고 투자자는 투자금에 대한 담보만 제공받는다는 전제입니다. 투자자를 실제 소유권자로 정하면 회계·세무처리가 달라질 수 있으므로 실제 사업구조, 계약서, 회계·세무처리가 서로 일치해야 합니다.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">14</span><span class="title">유사사례 및 실행 우선순위</span></div>
+    <div class="sec-body">
+      <p>유사사례에서는 투자금을 초과하는 지급액이 비영업대금의 이자라는 점에 당사자 간 이견이 없었고, 쟁점은 이자소득 귀속시기였습니다. 카페공명은 매월 분배금을 정산하므로 귀속시기 문제는 상대적으로 크지 않을 것으로 검토되었습니다.</p>
+      <p style="font-weight:700; margin-bottom:6px;">권장 실행 순서</p>
+      <ol class="list-num">
+        <li><b>①</b>투자계약서 수정</li>
+        <li><b>②</b>임대차계약서 수정</li>
+        <li><b>③</b>기존 세금계산서 발행 방식 검토</li>
+        <li><b>④</b>투자금 회계처리 변경</li>
+        <li><b>⑤</b>투자자별 원금 회수 관리대장 구축</li>
+        <li><b>⑥</b>원금 초과 지급 시 원천징수 절차 구축</li>
+        <li><b>⑦</b>인테리어 공사·컨설팅 업무 구조 재검토</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note">
+    <span class="label">유의사항</span>본 문서는 첨부 검토서를 업무용으로 요약한 자료입니다. 과거 거래의 수정신고 여부와 구체적 처리 방법은 회계법인에 별도 확인하는 것이 적절합니다.
+  </div>
+
+</div>
+</div>
+</body>
+</html>
